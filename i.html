@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interview Assistant</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Interview Assistant</h1>
+        
+        
+        <div class="setup-panel" id="setupPanel">
+            <h2>Interview Setup</h2>
+            <input type="text" id="candidateName" placeholder="Your Name (optional)">
+            <select id="roleSelect">
+                <option value="">Select a role</option>
+                <option value="Software Developer">Software Developer</option>
+                <option value="Data Scientist">Data Scientist</option>
+                <option value="Frontend Developer">Frontend Developer</option>
+                <option value="Backend Developer">Backend Developer</option>
+                <option value="DevOps Engineer">DevOps Engineer</option>
+            </select>
+            <button id="startSetupBtn">Start Setup</button>
+        </div>
+        
+        <div class="interview-container hidden" id="interviewContainer">
+            <div class="avatar-container" id="avatarContainer">
+                <div class="speech-bubble" id="speechBubble"></div>
+                <img src="/api/placeholder/400/400" alt="interviewer" class="avatar-image" id="avatarImage">
+                <!-- Expression canvas will be created dynamically -->
+            </div>
+            
+            <div class="interview-panel">
+                <div class="video-container">
+                    <video id="videoPreview" autoplay muted></video>
+                </div>
+                
+                <div class="question-container">
+                    <div class="current-question" id="currentQuestion"></div>
+                </div>
+                
+                <div class="controls">
+                    <button id="startBtn" disabled>Start Interview</button>
+                    <button id="nextBtn" disabled>Next Question</button>
+                    <button id="stopBtn" disabled>End Interview</button>
+                </div>
+                
+                <div class="status-indicator" id="recordingStatus"></div>
+                <div class="progress-container hidden" id="progressContainer">
+                    <div class="progress-bar" id="progressBar">0%</div>
+                </div>
+                <div id="statusMessages"></div>
+            </div>
+        </div>
+        
+        <div class="results hidden" id="resultsContainer">
+            <h2>Interview Results</h2>
+            <div id="resultsContent"></div>
+            <div id="pdfDownloadStatus"></div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  
+</body>
+</html>
